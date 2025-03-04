@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-from litepolis_router_database import *
+from litepolis_router_template import *
 
 app = FastAPI()
 

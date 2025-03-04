@@ -8,9 +8,9 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='litepolis-router-database',                     # Change
+    name='litepolis-router-template',                     # Change
     version="v0.0.1",                                     # Change
-    description='The database module for LitePolis',      # Change
+    description='The template module for LitePolis',      # Change
     long_description=readme,
     long_description_content_type="text/markdown",
     author='Your name',                                   # Change
