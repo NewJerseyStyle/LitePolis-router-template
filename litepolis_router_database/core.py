@@ -4,6 +4,7 @@ from fastapi import APIRouter
 
 router = APIRouter()
 prefix = __name__.split('.')[-2]
+prefix = '_'.join(prefix.split('_')[2:])
 dependencies = []
 
 tags_metadata = [
