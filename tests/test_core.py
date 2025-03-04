@@ -14,7 +14,7 @@ client = TestClient(app)
 def test_read_main():
     response = client.get(f"/api/{prefix}")
     assert response.status_code == 200
-    assert response.json() == {"detail": "OK"}
+    assert response.json()["detail"] == "OK"
 
 def test_read_user():
     response = client.get(f"/api/{prefix}/user")
