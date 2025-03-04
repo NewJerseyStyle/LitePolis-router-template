@@ -6,6 +6,20 @@ router = APIRouter()
 prefix = __name__.split('.')[-2]
 prefix = '_'.join(prefix.split('_')[2:])
 dependencies = []
+DEFAULT_CONFIG = {}
+
+def init(config):
+    """Initialize the router with the given configuration.
+
+    You can initialize database connection and pass other configuration in module.
+
+    Args:
+        config: A configparser.ConfigParser object containing the configuration.
+
+    Returns:
+        The initialized APIRouter object.
+    """
+    return router
 
 tags_metadata = [
     {
@@ -27,8 +41,9 @@ class ResponseMessage(BaseModel):
     status_code: int = 200
 
 @router.get("/")
-async def get_testroute():
-    return ResponseMessage(detail="OK")
+    async def get_testroute():
+        """This is a test route."""
+        return ResponseMessage(detail="OK")
 
 @router.get("/user", tags=["User"], response_model=ResponseMessage)
 async def get_user_route():
