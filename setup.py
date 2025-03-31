@@ -18,5 +18,5 @@ setup(
     url='https://github.com/change-to-your-repo',         # Change
     license=license,
     packages=find_packages(exclude=('tests', 'docs')),
-    install_requires=['fastapi'],
+    install_requires=['fastapi', 'litepolis'],
 )

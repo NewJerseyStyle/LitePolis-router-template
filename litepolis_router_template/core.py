@@ -2,23 +2,24 @@ from typing import Union
 from pydantic import BaseModel
 from fastapi import APIRouter
 
+from litepolis import get_config
+
 router = APIRouter()
 prefix = __name__.split('.')[-2]
 prefix = '_'.join(prefix.split('_')[2:])
 dependencies = []
 DEFAULT_CONFIG = {}
 
-def init(config):
-    """Initialize the router with the given configuration.
-
-    You can initialize database connection and pass other configuration in module.
-
-    Args:
-        config: A configparser.ConfigParser object containing the configuration.
+def init():
+    """Initialize the router with configuration fetched from package manager.
 
     Returns:
         The initialized APIRouter object.
     """
+    import os
+    if "PYTEST_CURRENT_TEST" not in os.environ:
+        # config: A configparser.ConfigParser object containing the configuration.
+        config = get_config()
     return router
 
 tags_metadata = [
