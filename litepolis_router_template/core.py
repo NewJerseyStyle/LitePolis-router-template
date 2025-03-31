@@ -10,21 +10,6 @@ prefix = '_'.join(prefix.split('_')[2:])
 dependencies = []
 DEFAULT_CONFIG = {}
 
-def init():
-    """Initialize the router with configuration fetched from package manager.
-
-    Returns:
-        The initialized APIRouter object.
-    """
-    import os
-    if ("PYTEST_CURRENT_TEST" not in os.environ and
-        "PYTEST_VERSION" not in os.environ):
-        # config: A configparser.ConfigParser object containing the configuration.
-        config = get_config("litepolis_router_template")
-    else:
-        config = DEFAULT_CONFIG
-    return router
-
 tags_metadata = [
     {
         "name": "User",
@@ -45,9 +30,9 @@ class ResponseMessage(BaseModel):
     status_code: int = 200
 
 @router.get("/")
-    async def get_testroute():
-        """This is a test route."""
-        return ResponseMessage(detail="OK")
+async def get_testroute():
+    """This is a test route."""
+    return ResponseMessage(detail="OK")
 
 @router.get("/user", tags=["User"], response_model=ResponseMessage)
 async def get_user_route():
