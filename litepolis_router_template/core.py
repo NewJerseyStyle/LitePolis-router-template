@@ -19,7 +19,9 @@ def init():
     import os
     if "PYTEST_CURRENT_TEST" not in os.environ:
         # config: A configparser.ConfigParser object containing the configuration.
-        config = get_config()
+        config = get_config("litepolis_router_template")
+    else:
+        config = DEFAULT_CONFIG
     return router
 
 tags_metadata = [
