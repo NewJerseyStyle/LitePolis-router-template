@@ -17,7 +17,8 @@ def init():
         The initialized APIRouter object.
     """
     import os
-    if "PYTEST_CURRENT_TEST" not in os.environ:
+    if ("PYTEST_CURRENT_TEST" not in os.environ and
+        "PYTEST_VERSION" not in os.environ):
         # config: A configparser.ConfigParser object containing the configuration.
         config = get_config("litepolis_router_template")
     else:
